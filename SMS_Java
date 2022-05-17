@@ -1,0 +1,11 @@
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n    \"globals\": {\n        \"originator\"  : \"d7sms\"\n    },\n    \"messages\":  [\n        {\n            \"originator\": \"smsinfo\",\n            \"content\": \"Welcome to the new age  of messaging\",\n            \"recipients\" : [\"971509001994\", \"971509001993\", \"971509001995\"]\n        }\n    ]\n}");
+Request request = new Request.Builder()
+  .url("{{messages_host}}api/v1/messages/")
+  .method("POST", body)
+  .addHeader("Authorization", "Bearer {{api_access_token}}")
+  .addHeader("Content-Type", "application/json")
+  .build();
+Response response = client.newCall(request).execute();
