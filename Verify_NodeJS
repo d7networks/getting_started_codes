@@ -11,7 +11,7 @@ var config = {
   method: 'post',
   url: 'https://d7networks.com/api/verifier/send\n',
   headers: { 
-    'Authorization': 'Token ba7758237f**********', 
+    'Authorization': '{{api_access_token}}', 
     ...data.getHeaders()
   },
   data : data
@@ -37,7 +37,7 @@ var config = {
   method: 'post',
   url: 'https://d7networks.com/api/verifier/verify',
   headers: { 
-    'Authorization': 'Token ba7758237f******', 
+    'Authorization': '{{api_access_token}}', 
     ...data.getHeaders()
   },
   data : data
@@ -62,7 +62,7 @@ var config = {
   method: 'post',
   url: 'https://d7networks.com/api/verifier/resend\n',
   headers: { 
-    'Authorization': 'Token ba7758237f50*********', 
+    'Authorization': '{{api_access_token}}', 
     ...data.getHeaders()
   },
   data : data
