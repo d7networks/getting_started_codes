@@ -40,7 +40,7 @@ dataList.append(encode(''))
 body = b'\r\n'.join(dataList)
 payload = body
 headers = {
-  'Authorization': 'Token ba7758237f**********',
+  'Authorization': '{{api_access_token}}',
   'Content-type': 'multipart/form-data; boundary={}'.format(boundary)
 }
 conn.request("POST", "/api/verifier/send
@@ -76,7 +76,7 @@ dataList.append(encode(''))
 body = b'\r\n'.join(dataList)
 payload = body
 headers = {
-  'Authorization': 'Token ba7758237f******',
+  'Authorization': '{{api_access_token}}',
   'Content-type': 'multipart/form-data; boundary={}'.format(boundary)
 }
 conn.request("POST", "/api/verifier/verify", payload, headers)
@@ -104,7 +104,7 @@ dataList.append(encode(''))
 body = b'\r\n'.join(dataList)
 payload = body
 headers = {
-  'Authorization': 'Token ba7758237f50*********',
+  'Authorization': '{{api_access_token}}',
   'Content-type': 'multipart/form-data; boundary={}'.format(boundary)
 }
 conn.request("POST", "/api/verifier/resend
