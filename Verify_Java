@@ -12,7 +12,7 @@ Request request = new Request.Builder()
   .url("https://d7networks.com/api/verifier/send
 ")
   .method("POST", body)
-  .addHeader("Authorization", "Token ba7758237f**********")
+  .addHeader("Authorization", "{{api_access_token}}")
   .build();
 Response response = client.newCall(request).execute();
 
@@ -28,7 +28,7 @@ RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
 Request request = new Request.Builder()
   .url("https://d7networks.com/api/verifier/verify")
   .method("POST", body)
-  .addHeader("Authorization", "Token ba7758237f******")
+  .addHeader("Authorization", "{{api_access_token}}")
   .build();
 Response response = client.newCall(request).execute();
 
@@ -44,6 +44,6 @@ Request request = new Request.Builder()
   .url("https://d7networks.com/api/verifier/resend
 ")
   .method("POST", body)
-  .addHeader("Authorization", "Token ba7758237f50*********")
+  .addHeader("Authorization", "{{api_access_token}}")
   .build();
 Response response = client.newCall(request).execute();
