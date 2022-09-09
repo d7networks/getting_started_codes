@@ -1,18 +1,19 @@
-````````````````` Send ````````````````` 
+````````````````` Generate OTP ````````````````` 
 var axios = require('axios');
-var FormData = require('form-data');
-var data = new FormData();
-data.append('mobile', '963951896080');
-data.append('sender_id', 'SMSINFO');
-data.append('message', 'Your D7SMS OTP is {code}, Donot share it with anyone. ');
-data.append('expiry', '900');
+var data = JSON.stringify({
+  "originator": "SignOTP",
+  "recipient": "{{recipient1}}",
+  "content": "Greetings from D7 API, your mobile verification code is: {}",
+  "expiry": "600",
+  "data_coding": "text"
+});
 
 var config = {
   method: 'post',
-  url: 'https://d7networks.com/api/verifier/send\n',
+  url: 'https://api.d7networks.com/verify/v1/otp/send-otp',
   headers: { 
-    'Authorization': '{{api_access_token}}', 
-    ...data.getHeaders()
+    'Authorization': 'Bearer {{api_access_token}}', 
+    'Content-Type': 'application/json'
   },
   data : data
 };
@@ -26,19 +27,18 @@ axios(config)
 });
 
 
-````````````````` Verify ````````````````` 
+````````````````` Resend OTP ````````````````` 
 var axios = require('axios');
-var FormData = require('form-data');
-var data = new FormData();
-data.append('otp_id', 'c1e881a5-493a-468f-b339-df8cc09ef661');
-data.append('otp_code', '554992');
+var data = JSON.stringify({
+  "otp_id": "8d963dbf-d655-4fe6-9157-48885a036050"
+});
 
 var config = {
   method: 'post',
-  url: 'https://d7networks.com/api/verifier/verify',
+  url: 'https://api.d7networks.com/verify/v1/otp/resend-otp',
   headers: { 
-    'Authorization': '{{api_access_token}}', 
-    ...data.getHeaders()
+    'Authorization': 'Bearer {{api_access_token}}', 
+    'Content-Type': 'application/json'
   },
   data : data
 };
@@ -52,18 +52,19 @@ axios(config)
 });
 
 
-````````````````` ReSend ````````````````` 
+````````````````` Verify OTP ````````````````` 
 var axios = require('axios');
-var FormData = require('form-data');
-var data = new FormData();
-data.append('otp_id', '3d343630-2cbf-46f0-bc27-a867c8d692e9');
+var data = JSON.stringify({
+  "otp_id": "8d963dbf-d655-4fe6-9157-48885a036050",
+  "otp_code": 435986
+});
 
 var config = {
   method: 'post',
-  url: 'https://d7networks.com/api/verifier/resend\n',
+  url: 'https://api.d7networks.com/verify/v1/otp/verify-otp',
   headers: { 
-    'Authorization': '{{api_access_token}}', 
-    ...data.getHeaders()
+    'Authorization': 'Bearer {{api_access_token}}', 
+    'Content-Type': 'application/json'
   },
   data : data
 };
