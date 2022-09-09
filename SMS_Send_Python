@@ -8,8 +8,8 @@ payload = json.dumps({
     {
       "channel": "sms",
       "recipients": [
-        {{recipient1}},
-        {{recipient2}}
+        "{{recipient1}}",
+        "{{recipient2}}"
       ],
       "content": "Greetings from D7 API",
       "msg_type": "text",
