@@ -80,7 +80,7 @@ Endpoint : /messages/v1/send
  | data_coding  | Text encoding (text, unicode, auto)  |  text | 
  | msg_type  | txt, audio sms, multimedia, image   | text  | 
  
- \* Mandatory Parameter s 
+ \* Mandatory Parameters 
 
 ### Example 1 ::: same content and multiple destination
 
@@ -219,7 +219,7 @@ Endpoint : /verify/v1/otp/send-otp
  | *expiry | OTP Expiry time in seconds | 600  | 
  | *data_coding  | Text encoding (text, unicode, auto) | text | 
  
- \* Mandatory Parameter s 
+ \* Mandatory Parameters 
 
 ### Sample request body
  ``` 
