@@ -1,0 +1,66 @@
+````````````````` Generate OTP ````````````````` 
+var headers = {
+  'Authorization': 'Bearer {{api_access_token}}',
+  'Content-Type': 'application/json'
+};
+var request = http.Request('POST', Uri.parse('https://api.d7networks.com/verify/v1/otp/send-otp'));
+request.body = json.encode({
+  "originator": "SignOTP",
+  "recipient": "{{recipient1}}",
+  "content": "Greetings from D7 API, your mobile verification code is: {}",
+  "expiry": "600",
+  "data_coding": "text"
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+
+
+````````````````` Resend OTP ````````````````` 
+var headers = {
+  'Authorization': 'Bearer {{api_access_token}}',
+  'Content-Type': 'application/json'
+};
+var request = http.Request('POST', Uri.parse('https://api.d7networks.com/verify/v1/otp/resend-otp'));
+request.body = json.encode({
+  "otp_id": "8d963dbf-d655-4fe6-9157-48885a036050"
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+
+
+````````````````` Verify OTP ````````````````` 
+var headers = {
+  'Authorization': 'Bearer {{api_access_token}}',
+  'Content-Type': 'application/json'
+};
+var request = http.Request('POST', Uri.parse('https://api.d7networks.com/verify/v1/otp/verify-otp'));
+request.body = json.encode({
+  "otp_id": "8d963dbf-d655-4fe6-9157-48885a036050",
+  "otp_code": 435986
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
