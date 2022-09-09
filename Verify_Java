@@ -1,49 +1,40 @@
-````````````````` Send ````````````````` 
+````````````````` Generate OTP ````````````````` 
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
-MediaType mediaType = MediaType.parse("text/plain");
-RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
-  .addFormDataPart("mobile","963951896080")
-  .addFormDataPart("sender_id","SMSINFO")
-  .addFormDataPart("message","Your D7SMS OTP is {code}, Donot share it with anyone. ")
-  .addFormDataPart("expiry","900")
-  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n    \"originator\": \"SignOTP\",\n    \"recipient\": \"{{recipient1}}\",\n    \"content\": \"Greetings from D7 API, your mobile verification code is: {}\",\n    \"expiry\": \"600\",\n    \"data_coding\": \"text\"\n}");
 Request request = new Request.Builder()
-  .url("https://d7networks.com/api/verifier/send
-")
+  .url("https://api.d7networks.com/verify/v1/otp/send-otp")
   .method("POST", body)
-  .addHeader("Authorization", "{{api_access_token}}")
+  .addHeader("Authorization", "Bearer {{api_access_token}}")
+  .addHeader("Content-Type", "application/json")
   .build();
 Response response = client.newCall(request).execute();
 
 
-````````````````` Verify ````````````````` 
+````````````````` Resend OTP ````````````````` 
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
-MediaType mediaType = MediaType.parse("text/plain");
-RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
-  .addFormDataPart("otp_id","c1e881a5-493a-468f-b339-df8cc09ef661")
-  .addFormDataPart("otp_code","554992")
-  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n    \"otp_id\":\"8d963dbf-d655-4fe6-9157-48885a036050\"\n}");
 Request request = new Request.Builder()
-  .url("https://d7networks.com/api/verifier/verify")
+  .url("https://api.d7networks.com/verify/v1/otp/resend-otp")
   .method("POST", body)
-  .addHeader("Authorization", "{{api_access_token}}")
+  .addHeader("Authorization", "Bearer {{api_access_token}}")
+  .addHeader("Content-Type", "application/json")
   .build();
 Response response = client.newCall(request).execute();
 
 
-````````````````` ReSend ````````````````` 
+````````````````` Verify OTP ````````````````` 
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
-MediaType mediaType = MediaType.parse("text/plain");
-RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
-  .addFormDataPart("otp_id","3d343630-2cbf-46f0-bc27-a867c8d692e9")
-  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n    \"otp_id\":\"8d963dbf-d655-4fe6-9157-48885a036050\",\n    \"otp_code\":435986\n}");
 Request request = new Request.Builder()
-  .url("https://d7networks.com/api/verifier/resend
-")
+  .url("https://api.d7networks.com/verify/v1/otp/verify-otp")
   .method("POST", body)
-  .addHeader("Authorization", "{{api_access_token}}")
+  .addHeader("Authorization", "Bearer {{api_access_token}}")
+  .addHeader("Content-Type", "application/json")
   .build();
 Response response = client.newCall(request).execute();
