@@ -1,11 +1,12 @@
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\n    \"globals\": {\n        \"originator\"  : \"d7sms\"\n    },\n    \"messages\":  [\n        {\n            \"originator\": \"smsinfo\",\n            \"content\": \"Welcome to the new age  of messaging\",\n            \"recipients\" : [\"971509001994\", \"971509001993\", \"971509001995\"]\n        }\n    ]\n}");
+RequestBody body = RequestBody.create(mediaType, "{\n  \"messages\": [\n    {\n        \"channel\": \"sms\",\n        \"recipients\": [{{recipient1}},{{recipient2}}],\n        \"content\": \"Greetings from D7 API\",\n        \"msg_type\": \"text\",\n        \"data_coding\": \"text\"\n    }\n  ],\n  \"message_globals\": {\n    \"originator\": \"SignOTP\",\n    \"report_url\": \"https://the_url_to_recieve_delivery_report.com\"\n  }\n}");
 Request request = new Request.Builder()
-  .url("{{messages_host}}api/v1/messages/")
+  .url("https://api.d7networks.com/messages/v1/send")
   .method("POST", body)
-  .addHeader("Authorization", "Bearer {{api_access_token}}")
   .addHeader("Content-Type", "application/json")
+  .addHeader("Accept", "application/json")
+  .addHeader("Authorization", "Bearer {{api_access_token}}")
   .build();
 Response response = client.newCall(request).execute();
