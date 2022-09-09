@@ -1,27 +1,30 @@
 var axios = require('axios');
 var data = JSON.stringify({
-  "globals": {
-    "originator": "d7sms"
-  },
   "messages": [
     {
-      "originator": "smsinfo",
-      "content": "Welcome to the new age  of messaging",
+      "channel": "sms",
       "recipients": [
-        "971509001994",
-        "971509001993",
-        "971509001995"
-      ]
+        {{recipient1}},
+        {{recipient2}}
+      ],
+      "content": "Greetings from D7 API",
+      "msg_type": "text",
+      "data_coding": "text"
     }
-  ]
+  ],
+  "message_globals": {
+    "originator": "SignOTP",
+    "report_url": "https://the_url_to_recieve_delivery_report.com"
+  }
 });
 
 var config = {
   method: 'post',
-  url: '{{messages_host}}api/v1/messages/',
+  url: 'https://api.d7networks.com/messages/v1/send',
   headers: { 
-    'Authorization': 'Bearer {{api_access_token}}', 
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json', 
+    'Accept': 'application/json', 
+    'Authorization': 'Bearer {{api_access_token}}'
   },
   data : data
 };
