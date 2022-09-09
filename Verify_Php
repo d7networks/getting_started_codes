@@ -1,10 +1,10 @@
-````````````````` Send ````````````````` 
+````````````````` Generate OTP ````````````````` 
 <?php
 
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => 'https://d7networks.com/api/verifier/send%0A',
+  CURLOPT_URL => 'https://api.d7networks.com/verify/v1/otp/send-otp',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
@@ -12,9 +12,16 @@ curl_setopt_array($curl, array(
   CURLOPT_FOLLOWLOCATION => true,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => 'POST',
-  CURLOPT_POSTFIELDS => array('mobile' => '963951896080','sender_id' => 'SMSINFO','message' => 'Your D7SMS OTP is {code}, Donot share it with anyone. ','expiry' => '900'),
+  CURLOPT_POSTFIELDS =>'{
+    "originator": "SignOTP",
+    "recipient": "{{recipient1}}",
+    "content": "Greetings from D7 API, your mobile verification code is: {}",
+    "expiry": "600",
+    "data_coding": "text"
+}',
   CURLOPT_HTTPHEADER => array(
-    'Authorization: {{api_access_token}}'
+    'Authorization: Bearer {{api_access_token}}',
+    'Content-Type: application/json'
   ),
 ));
 
@@ -23,13 +30,14 @@ $response = curl_exec($curl);
 curl_close($curl);
 echo $response;
 
-````````````````` Verify ````````````````` 
+
+````````````````` Resend OTP ````````````````` 
 <?php
 
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => 'https://d7networks.com/api/verifier/verify',
+  CURLOPT_URL => 'https://api.d7networks.com/verify/v1/otp/resend-otp',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
@@ -37,9 +45,12 @@ curl_setopt_array($curl, array(
   CURLOPT_FOLLOWLOCATION => true,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => 'POST',
-  CURLOPT_POSTFIELDS => array('otp_id' => 'c1e881a5-493a-468f-b339-df8cc09ef661','otp_code' => '554992'),
+  CURLOPT_POSTFIELDS =>'{
+    "otp_id":"8d963dbf-d655-4fe6-9157-48885a036050"
+}',
   CURLOPT_HTTPHEADER => array(
-    'Authorization: {{api_access_token}}'
+    'Authorization: Bearer {{api_access_token}}',
+    'Content-Type: application/json'
   ),
 ));
 
@@ -48,13 +59,14 @@ $response = curl_exec($curl);
 curl_close($curl);
 echo $response;
 
-````````````````` ReSend ````````````````` 
+
+````````````````` Verify OTP ````````````````` 
 <?php
 
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => 'https://d7networks.com/api/verifier/resend%0A',
+  CURLOPT_URL => 'https://api.d7networks.com/verify/v1/otp/verify-otp',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
@@ -62,9 +74,13 @@ curl_setopt_array($curl, array(
   CURLOPT_FOLLOWLOCATION => true,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => 'POST',
-  CURLOPT_POSTFIELDS => array('otp_id' => '3d343630-2cbf-46f0-bc27-a867c8d692e9'),
+  CURLOPT_POSTFIELDS =>'{
+    "otp_id":"8d963dbf-d655-4fe6-9157-48885a036050",
+    "otp_code":435986
+}',
   CURLOPT_HTTPHEADER => array(
-    'Authorization: {{api_access_token}}'
+    'Authorization: Bearer {{api_access_token}}',
+    'Content-Type: application/json'
   ),
 ));
 
