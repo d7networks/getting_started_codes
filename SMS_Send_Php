@@ -1,6 +1,6 @@
 <?php
     $curl = curl_init();
-    $token = {{api_access_token}}; // Replace it with your API Token
+    $token = "YOUR_API_TOKEN"; // Replace it with your API Token
     $originator = "SignOTP"; // Replace it with your Sender ID
     $recipients = array("receipient_1","receipient_2"); // Replace it with real recipients
     $content = "Greetings from D7 API - Second Message"; // Replace it with message content
