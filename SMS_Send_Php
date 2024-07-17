@@ -3,7 +3,7 @@
     $token = {{api_access_token}}; // Replace it with your API Token
     $originator = "SignOTP"; // Replace it with your Sender ID
     $recipients = array({{recipient1}},{{recipient2}}); // Replace it with real recipients
-    $content = "Greetings from D7 API - Second Message"; // Replace it with message content
+    $content = "Greetings from Rubit Cube API - Second Message"; // Replace it with message content
     $message_obj =  array( 
         "channel"=> "sms",
         "msg_type"=> "text",

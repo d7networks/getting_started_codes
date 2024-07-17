@@ -4,7 +4,7 @@ curl --location --request POST 'https://api.d7networks.com/viber/v1/send/' \
 --data-raw '{
     "messages": [
       {
-        "content": "Test Message from D7 Networks",
+        "content": "Test Message from Rubit Cube Networks",
         "button_caption":"SubScribe",
         "button_action":"http://www.google.com",
         "file_name":'{{file_url}}',

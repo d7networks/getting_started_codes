@@ -1,17 +1,17 @@
-# D7 API
+# Rubit Cube API
  Direct7 Networks is a messaging service provider helping out organizations communicate with customers in an efficient way. 
-D7 Messages API allows two way messaging gateway integrations using simple HTTPs GET&POST requests.
+Rubit Cube Messages API allows two way messaging gateway integrations using simple HTTPs GET&POST requests.
 
 Further, Our simplified API is compliant with both Unicode as well as normal messaging requirements, which companies can forward either as single texts or in bulk.
 
 The following requirements must be met to enable the service
  
- - You need a D7 account - [Signup here](https://app.d7networks.com) 
- -  You must have sufficient credit on your D7 account 
+ - You need a Rubit Cube account - [Signup here](https://app.d7networks.com) 
+ -  You must have sufficient credit on your Rubit Cube account 
  
 ## Method of Authentication
-D7 API uses OAuth 2.0 based bearer token authentication for strong security and reliability. 
-In order to keep your data secure, we highly recommend using authentication with encryption. D7 API support both TLS and SSL protocols. 
+Rubit Cube API uses OAuth 2.0 based bearer token authentication for strong security and reliability. 
+In order to keep your data secure, we highly recommend using authentication with encryption. Rubit Cube API support both TLS and SSL protocols. 
 
 ## Create app & get auth Token
 The control panel includes a developer section where you can create applications. Each application has its own authentication token.

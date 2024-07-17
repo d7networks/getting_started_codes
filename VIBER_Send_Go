@@ -15,7 +15,7 @@ func main() {
   payload := strings.NewReader(`{
   "messages": [
     {
-      "content": "Test Message from D7 Networks",
+      "content": "Test Message from Rubit Cube Networks",
       "button_caption":"SubScribe",
       "button_action":"http://www.google.com",
       "file_name":{{file_url}},

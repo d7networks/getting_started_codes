@@ -6,7 +6,7 @@ curl --location --request POST 'https://api.d7networks.com/messages/v1/send' \
   "messages": [
     {
         "channel": "slack",
-        "content": "Greetings from D7 API",
+        "content": "Greetings from Rubit Cube API",
         "work_space_name": "WorkspaceName",
         "channel_name": "channelName",
     }

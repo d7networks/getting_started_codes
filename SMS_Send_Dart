@@ -12,7 +12,7 @@ request.body = json.encode({
         "{{recipient1}}",
         "{{recipient2}}"
       ],
-      "content": "Greetings from D7 API",
+      "content": "Greetings from Rubit Cube API",
       "msg_type": "text",
       "data_coding": "text"
     }

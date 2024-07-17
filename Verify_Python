@@ -8,7 +8,7 @@ url = "https://api.d7networks.com/verify/v1/otp/send-otp"
 payload = json.dumps({
   "originator": "SignOTP",
   "recipient": "{{recipient1}}",
-  "content": "Greetings from D7 API, your mobile verification code is: {}",
+  "content": "Greetings from Rubit Cube API, your mobile verification code is: {}",
   "expiry": "600",
   "data_coding": "text"
 })
