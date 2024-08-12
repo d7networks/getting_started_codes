@@ -3,7 +3,9 @@
     $token = {{api_access_token}}; // Replace it with your API Token
     $originator = {{originator}}; // Replace it with your Sender ID
     $template_id = {{template_id}}
-    $recipients = array({{recipient1}},{{recipient2}}); // Replace it with real recipients
+    $recipient1 = array("recipient"=>{{recipient1}})
+    $recipient2 = array("recipient"=>{{recipient2}})
+    $recipients = array($recipient1,$recipient2); // Replace it with real recipients
     $body_parameter_values = array("0": "first_parameter_in_your_template","1": "second_parameter_in_your_template")
     $template =  array( 
         "template_id"=> $template_id,

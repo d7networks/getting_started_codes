@@ -3,7 +3,14 @@ var data = JSON.stringify({
   "messages": [
     {
         "originator": "{{originator}}",
-        "recipients": ["{{recipient1}}","{{recipient2}}"],
+        "recipients": [
+          {
+          "recipient": "{recipient1}"
+          },
+          {
+          "recipient": "{recipient2}"
+          }
+        ],
         "content": {
           "message_type": "TEMPLATE",
           "template": {
