@@ -1,0 +1,31 @@
+````````````````` Send OTP `````````````````
+$headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+$headers.Add("Authorization", "Bearer {{api_access_token}}")
+$headers.Add("Content-Type", "application/json")
+
+$body = "{`n    `"recipient`": `"{{recipient1}}`",`n    `"flow_id`": `"{{flow_id}}`"`n}"
+
+$response = Invoke-RestMethod 'https://api.d7networks.com/verify/v2/otp/send-otp' -Method 'POST' -Headers $headers -Body $body
+$response | ConvertTo-Json
+
+
+````````````````` Resend OTP `````````````````
+$headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+$headers.Add("Authorization", "Bearer {{api_access_token}}")
+$headers.Add("Content-Type", "application/json")
+
+$body = "{`n    `"otp_id`":`"8d963dbf-d655-4fe6-9157-48885a036050`"`n}"
+
+$response = Invoke-RestMethod 'https://api.d7networks.com/verify/v2/otp/resend-otp' -Method 'POST' -Headers $headers -Body $body
+$response | ConvertTo-Json
+
+
+````````````````` Verify OTP `````````````````
+$headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+$headers.Add("Authorization", "Bearer {{api_access_token}}")
+$headers.Add("Content-Type", "application/json")
+
+$body = "{`n    `"otp_id`":`"8d963dbf-d655-4fe6-9157-48885a036050`",`n    `"otp_code`":`"435986`"`n}"
+
+$response = Invoke-RestMethod 'https://api.d7networks.com/verify/v2/otp/verify-otp' -Method 'POST' -Headers $headers -Body $body
+$response | ConvertTo-Json
